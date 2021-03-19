@@ -6,6 +6,7 @@ export type Theme = {
     fontColorLight: string;
     fontColorDark: string;
     fontColorDarker: string;
+    errorColor: string;
 }
 
 export type DefaultStyledComponentProps = {
@@ -20,4 +21,5 @@ export const defaultTheme: Theme = {
     fontColorLight: '#FFFFFF',
     fontColorDark: '#555',
     fontColorDarker: '#000',
+    errorColor: '#c33759',
 };
