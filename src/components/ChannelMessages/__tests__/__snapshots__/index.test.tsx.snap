@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/ChannelMessages shoud render correctly 1`] = `
+<div
+  class="sc-pFZIQ dJJXEx"
+  data-testid="channel-messages"
+>
+  <div
+    class="sc-bdfBwQ ktSfRd"
+  >
+    <div
+      class="sc-gsTCUz hvBwxn"
+    >
+      <div
+        class="sc-hKgILt ezYlzq"
+      >
+        <img
+          alt="avatar"
+          class="sc-eCssSg laFpUa"
+          src="/avatar.jpg"
+        />
+      </div>
+    </div>
+    <div
+      class="sc-dlfnbm cMmjyT"
+    >
+      <div
+        class="sc-jSgupP hyrchM"
+      >
+        <p
+          class="sc-gKsewC gsTsyj"
+          data-testid="author"
+        >
+          Admin
+        </p>
+        <p
+          class="sc-iBPRYJ cXPabg"
+          data-testid="time"
+        >
+          04:00 PM
+        </p>
+      </div>
+      <p
+        class="sc-fubCfw gqInqL"
+        data-testid="message"
+      >
+        Hello everyone!
+      </p>
+    </div>
+  </div>
+  <div
+    class="sc-bdfBwQ ktSfRd"
+  >
+    <div
+      class="sc-gsTCUz hvBwxn"
+    >
+      <div
+        class="sc-hKgILt ezYlzq"
+      >
+        <img
+          alt="avatar"
+          class="sc-eCssSg laFpUa"
+          src="/avatar.jpg"
+        />
+      </div>
+    </div>
+    <div
+      class="sc-dlfnbm cMmjyT"
+    >
+      <div
+        class="sc-jSgupP hyrchM"
+      >
+        <p
+          class="sc-gKsewC gsTsyj"
+          data-testid="author"
+        >
+          Admin
+        </p>
+        <p
+          class="sc-iBPRYJ cXPabg"
+          data-testid="time"
+        >
+          04:01 PM
+        </p>
+      </div>
+      <p
+        class="sc-fubCfw gqInqL"
+        data-testid="message"
+      >
+        Second message
+      </p>
+    </div>
+  </div>
+  <div
+    class="sc-bdfBwQ ktSfRd"
+  >
+    <div
+      class="sc-gsTCUz hvBwxn"
+    >
+      <div
+        class="sc-hKgILt ezYlzq"
+      >
+        <img
+          alt="avatar"
+          class="sc-eCssSg laFpUa"
+          src="/avatar.jpg"
+        />
+      </div>
+    </div>
+    <div
+      class="sc-dlfnbm cMmjyT"
+    >
+      <div
+        class="sc-jSgupP hyrchM"
+      >
+        <p
+          class="sc-gKsewC gsTsyj"
+          data-testid="author"
+        >
+          Admin
+        </p>
+        <p
+          class="sc-iBPRYJ cXPabg"
+          data-testid="time"
+        >
+          04:05 PM
+        </p>
+      </div>
+      <p
+        class="sc-fubCfw gqInqL"
+        data-testid="message"
+      >
+        Last message
+      </p>
+    </div>
+  </div>
+</div>
+`;
