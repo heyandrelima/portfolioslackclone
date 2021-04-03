@@ -9,6 +9,7 @@ export const MessageContainer = styled.div<DefaultStyledComponentProps>`
         display: flex;
         flex-flow: row;
         align-items: flex-start;
+        margin: 1em 0;
     }
 `;
 

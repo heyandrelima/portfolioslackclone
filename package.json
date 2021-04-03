@@ -59,7 +59,7 @@
       "!**/node_modules/**",
       "!src/**/types.ts",
       "!src/**/*.styles.@(js|jsx|ts|tsx)",
-      "!src/**/*.stories.@(js|jsx|ts|tsx)"
+      "!src/**/*.snap"
     ]
   }
 }
