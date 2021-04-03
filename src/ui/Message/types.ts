@@ -1,6 +1,5 @@
+import { Message } from '../../types/api';
+
 export type Props = {
-    author: string;
-    avatarUrl: string;
-    createdAt: Date;
-    message: string;
+    message: Message
 }
