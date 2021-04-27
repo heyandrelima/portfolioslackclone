@@ -25,7 +25,7 @@ exports[`components/ChannelMessages shoud render correctly 1`] = `
       class="sc-dlfnbm cMmjyT"
     >
       <div
-        class="sc-jSgupP hyrchM"
+        class="sc-jSgupP gbYrXe"
       >
         <p
           class="sc-gKsewC gsTsyj"
@@ -68,7 +68,7 @@ exports[`components/ChannelMessages shoud render correctly 1`] = `
       class="sc-dlfnbm cMmjyT"
     >
       <div
-        class="sc-jSgupP hyrchM"
+        class="sc-jSgupP gbYrXe"
       >
         <p
           class="sc-gKsewC gsTsyj"
@@ -111,7 +111,7 @@ exports[`components/ChannelMessages shoud render correctly 1`] = `
       class="sc-dlfnbm cMmjyT"
     >
       <div
-        class="sc-jSgupP hyrchM"
+        class="sc-jSgupP gbYrXe"
       >
         <p
           class="sc-gKsewC gsTsyj"
