@@ -65,6 +65,7 @@ export const Top = styled.div`
         justify-content: flex-start;
         align-items: center;
         width: 100%;
+        cursor: pointer;
     }
 `;
 
