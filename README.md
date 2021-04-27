@@ -8,7 +8,6 @@ The idea was to create a new portfolio website by mimicking Slack's UI and prese
 
 
 ## COMPONENTS TO CREATE:
-- Top bar
 - Message form
 - Channel top bar (with label and participants)
 - Channel details
