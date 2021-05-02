@@ -1,12 +1,13 @@
 name: CI
 on: push
 jobs:
-  build:
+  test-coverage:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
     - uses: actions/checkout@v2
-    - name: CD into frontend
-      run: cd frontend
     - name: Install modules
       run: yarn
     - name: Run tests
