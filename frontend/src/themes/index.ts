@@ -1,7 +1,12 @@
 export type Theme = {
     backgroundColorLight: string;
+    backgroundColorLighter: string;
     backgroundColorDark: string;
     backgroundColorDarker: string;
+    borderColorLight: string;
+    borderColorLighter: string;
+    borderColorDark: string;
+    borderColorDarker: string; 
     fontFamily: string;
     fontColorLight: string;
     fontColorDark: string;
@@ -14,9 +19,14 @@ export type DefaultStyledComponentProps = {
 }
 
 export const defaultTheme: Theme = {
-    backgroundColorLight: '#FFFFFF',
+    backgroundColorLight: '#FAFAFA',
+    backgroundColorLighter: '#FFFFFF',
     backgroundColorDark: '#3E103F',
     backgroundColorDarker: '#2B092A',
+    borderColorLight: '#FAFAFA',
+    borderColorLighter: '#FFFFFF',
+    borderColorDark: '#999999',
+    borderColorDarker: '#000000',
     fontFamily: 'Arial, sans-serif',
     fontColorLight: '#FFFFFF',
     fontColorDark: '#555',

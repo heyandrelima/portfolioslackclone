@@ -1,38 +1,49 @@
-import React, { MutableRefObject, useRef, useState } from 'react';
-import { Container, EditableSpan } from './styles';
+import React, { useState } from 'react';
+import { DraftEditorCommand, DraftHandleValue, Editor, EditorState, RichUtils } from 'draft-js';
+import 'draft-js/dist/Draft.css';
+import MenuBar from './MenuBar';
+import { Container, StyledEditor } from './styles';
 
-const RichTextEditor = () => {
-    const editableRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
-    const [innerHtml, setInnerHtml] = useState<string>('');
-    const [keysPressed, setKeysPressed] = useState<string[]>([]);
+type Props = {
+}
 
-    function onKeyUp(e: React.KeyboardEvent<HTMLInputElement>): void {
-        const newHtml = e.currentTarget.innerHTML;
-        setInnerHtml(newHtml);
-        console.log(newHtml);
+const RichTextEditor: React.FC<Props> = (props: Props) => {
+    const [editorState, setEditorState] = useState<EditorState>(EditorState.createEmpty());
+    const [hideFormatting, setHideFormatting] = useState<boolean>(false);
+    const [menuHeight, setMenuHeight] = useState<number>(40);
 
-        // All keys released
-        setKeysPressed([]);
+    function onChangeEditor(newState: EditorState): void {
+        setEditorState(newState);
     }
 
-    function onKeyDown(e: React.KeyboardEvent): void {
-        const currentKey: string = e.key;
+    function handleKeyCommand(command: DraftEditorCommand, currentEditorState: EditorState): DraftHandleValue {
+        const newState = RichUtils.handleKeyCommand(currentEditorState, command);
 
-        // Execute a shortcut
-        if (keysPressed.includes('Control')) {
-            // run shortcut
-            const selection = window.getSelection()?.toString();
-            console.log(selection);
+        if (newState) {
+            setEditorState(newState);
+            return 'handled';
         }
-        setKeysPressed([...keysPressed, currentKey]);
+        return 'not-handled';
+    }
+
+    function onClickBold(event: React.MouseEvent): void {
+        event.preventDefault();
+        const newState = RichUtils.toggleInlineStyle(editorState, 'BOLD');
+        setEditorState(newState);
+    }
+
+    function onToggleHideFormating(newValue: boolean): void {
+        setHideFormatting(newValue);
+    }
+
+    function onResize(newHeight: number): void {
+        setMenuHeight(newHeight);
     }
 
     return (
-        <Container>
-            <EditableSpan ref={editableRef} contentEditable={true} onKeyUp={onKeyUp} onKeyDown={onKeyDown} />
-            {keysPressed?.map((keyPressed: string, index: number) => (
-                <span key={index}>{keyPressed}</span>
-            ))}
+        <Container menuHeight={menuHeight}>
+            <Editor editorState={editorState} onChange={onChangeEditor} handleKeyCommand={handleKeyCommand} />
+            <MenuBar hideFormatting={hideFormatting} onToggleHideFormatting={onToggleHideFormating} onResize={onResize} />
         </Container>
     );
 };
