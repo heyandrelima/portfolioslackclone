@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { DraftEditorCommand, DraftHandleValue, Editor, EditorState, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import MenuBar from './MenuBar';
-import { Container, StyledEditor } from './styles';
+import { Container } from './styles';
 
-type Props = {
-}
+type Props = {}
 
 const RichTextEditor: React.FC<Props> = (props: Props) => {
     const [editorState, setEditorState] = useState<EditorState>(EditorState.createEmpty());
@@ -26,14 +25,18 @@ const RichTextEditor: React.FC<Props> = (props: Props) => {
         return 'not-handled';
     }
 
-    function onClickBold(event: React.MouseEvent): void {
-        event.preventDefault();
-        const newState = RichUtils.toggleInlineStyle(editorState, 'BOLD');
+    function toggleHideFormating(newValue: boolean): void {
+        setHideFormatting(newValue);
+    }
+
+    function toggleInlineStyle(inlineStyle: string): void {
+        const newState = RichUtils.toggleInlineStyle(editorState, inlineStyle);
         setEditorState(newState);
     }
 
-    function onToggleHideFormating(newValue: boolean): void {
-        setHideFormatting(newValue);
+    function toggleBlockType(blockType: string): void {
+        const newState = RichUtils.toggleBlockType(editorState, blockType);
+        setEditorState(newState);
     }
 
     function onResize(newHeight: number): void {
@@ -43,7 +46,8 @@ const RichTextEditor: React.FC<Props> = (props: Props) => {
     return (
         <Container menuHeight={menuHeight}>
             <Editor editorState={editorState} onChange={onChangeEditor} handleKeyCommand={handleKeyCommand} />
-            <MenuBar hideFormatting={hideFormatting} onToggleHideFormatting={onToggleHideFormating} onResize={onResize} />
+            <MenuBar hideFormatting={hideFormatting} toggleHideFormatting={toggleHideFormating}
+                toggleInlineStyle={toggleInlineStyle} toggleBlockType={toggleBlockType} onResize={onResize} />
         </Container>
     );
 };

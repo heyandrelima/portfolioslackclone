@@ -17,13 +17,14 @@ import { MenuContainer, LeftMenu, RightMenu, MenuBtn } from './styles';
 
 type MenuBarProps = {
     hideFormatting: boolean;
-    onToggleHideFormatting: (hideFormatting: boolean) => void;
+    toggleHideFormatting: (hideFormatting: boolean) => void;
+    toggleInlineStyle: (inlineStyle: string) => void;
+    toggleBlockType: (blockType: string) => void;
     onResize: (newHeight: number) => void;
     className?: string;
 }
 
-const MenuBar: React.FC<MenuBarProps> = (props: MenuBarProps) => {
-    const { hideFormatting, onResize } = props;
+const MenuBar: React.FC<MenuBarProps> = ({ hideFormatting, toggleHideFormatting, toggleInlineStyle, toggleBlockType, onResize, className }: MenuBarProps) => {
     const componentRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
 
     const onResizeWindow = useCallback(() => {
@@ -41,56 +42,52 @@ const MenuBar: React.FC<MenuBarProps> = (props: MenuBarProps) => {
         };
     }, [onResizeWindow]);
 
-    function onToggleHideFormatting(): void {
-        props.onToggleHideFormatting(!hideFormatting);
-    }
-
     return (
-        <MenuContainer className={props.className} ref={componentRef}>
+        <MenuContainer className={className} ref={componentRef}>
             {
-                hideFormatting ? null :
-                    <LeftMenu>
-                        <MenuBtn title='Bold' data-testid='bold-button'>
-                            <AiOutlineBold />
-                        </MenuBtn>
-                        <MenuBtn title='Italic' data-testid='italic-button'>
-                            <AiOutlineItalic />
-                        </MenuBtn>
-                        <MenuBtn title='Strikethrough' data-testid='strikethrough-button'>
-                            <AiOutlineStrikethrough />
-                        </MenuBtn>
-                        <MenuBtn title='Inline code' data-testid='inlinecode-button'>
-                            <BsCodeSlash />
-                        </MenuBtn>
-                        <MenuBtn title='Hyperlink' data-testid='link-button'>
-                            <AiOutlineLink />
-                        </MenuBtn>
-                        <MenuBtn title='Ordered list' data-testid='orderedlist-button'>
-                            <AiOutlineOrderedList />
-                        </MenuBtn>
-                        <MenuBtn title='Unordered list' data-testid='unorderedlist-button'>
-                            <AiOutlineUnorderedList />
-                        </MenuBtn>
-                        <MenuBtn title='Block quote' data-testid='blockquote-button'>
-                            <BsBlockquoteLeft />
-                        </MenuBtn>
-                        <MenuBtn title='Block code' data-testid='blockcode-button'>
-                            <AiOutlineCode />
-                        </MenuBtn>
-                    </LeftMenu>
+                !hideFormatting &&
+                <LeftMenu>
+                    <MenuBtn title='Bold' data-testid='bold-button' onClick={() => toggleInlineStyle('bold')}>
+                        <AiOutlineBold />
+                    </MenuBtn>
+                    <MenuBtn title='Italic' data-testid='italic-button' onClick={() => toggleInlineStyle('italic')}>
+                        <AiOutlineItalic />
+                    </MenuBtn>
+                    <MenuBtn title='Strikethrough' data-testid='strikethrough-button' onClick={() => toggleInlineStyle('strikethrough')}>
+                        <AiOutlineStrikethrough />
+                    </MenuBtn>
+                    <MenuBtn title='Inline code' data-testid='inlinecode-button' onClick={() => toggleInlineStyle('code')}>
+                        <BsCodeSlash />
+                    </MenuBtn>
+                    <MenuBtn title='Hyperlink' data-testid='link-button'>
+                        <AiOutlineLink />
+                    </MenuBtn>
+                    <MenuBtn title='Ordered list' data-testid='orderedlist-button' onClick={() => toggleBlockType('ordered-list-item')}>
+                        <AiOutlineOrderedList />
+                    </MenuBtn>
+                    <MenuBtn title='Unordered list' data-testid='unorderedlist-button' onClick={() => toggleBlockType('unordered-list-item')}>
+                        <AiOutlineUnorderedList />
+                    </MenuBtn>
+                    <MenuBtn title='Block quote' data-testid='blockquote-button' onClick={() => toggleBlockType('blockquote')}>
+                        <BsBlockquoteLeft />
+                    </MenuBtn>
+                    <MenuBtn title='Block code' data-testid='blockcode-button' onClick={() => toggleBlockType('code-block')}>
+                        <AiOutlineCode />
+                    </MenuBtn>
+                </LeftMenu>
             }
             <RightMenu>
-                <MenuBtn title={hideFormatting ? 'Show formatting' : 'Hidden formatting'} data-testid='toggleformatting-button'
-                    onClick={onToggleHideFormatting}>
+                <MenuBtn title={hideFormatting ? 'Show formatting' : 'Hide formatting'} data-testid='toggleformatting-button'
+                    onClick={() => toggleHideFormatting(!hideFormatting)}>
                     <AiOutlineFontSize />
                 </MenuBtn>
-                <MenuBtn title='Mention someone' data-testid='mention-button'>
+                <MenuBtn title='Mention someone' data-testid='mention-button' disabled={true}>
                     <GoMention />
                 </MenuBtn>
-                <MenuBtn title='Emoji' data-testid='emoji-button'>
+                <MenuBtn title='Emoji' data-testid='emoji-button' disabled={true}>
                     <GrEmoji />
                 </MenuBtn>
-                <MenuBtn title='Attach a file' data-testid='attach-button'>
+                <MenuBtn title='Attach a file' data-testid='attach-button' disabled={true}>
                     <GrAttachment />
                 </MenuBtn>
                 <MenuBtn title='Send message' data-testid='send-button'>
