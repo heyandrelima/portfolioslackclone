@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/ChannelInfo shoud render correctly 1`] = `null`;
+
+exports[`components/ChannelMessages shoud render correctly 1`] = `null`;
