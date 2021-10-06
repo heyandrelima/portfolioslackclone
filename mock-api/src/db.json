@@ -1,0 +1,23 @@
+{
+    "channels": [
+        {
+            "id": "abc",
+            "label": "general",
+            "messages": [
+                {
+                    "createdAt": "Wed Oct 06 2021 16:53:40",
+                    "id": "123",
+                    "author": {
+                        "name": "Admin",
+                        "avatar": "http://andrelima.space/static/media/profile.285b1009.jpeg"
+                    },
+                    "body": "First message"
+                }
+            ]
+        },
+        {
+            "id": "def",
+            "label": "work-experience"
+        }
+    ]
+}
