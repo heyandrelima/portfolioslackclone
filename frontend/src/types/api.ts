@@ -14,4 +14,5 @@ export type Channel = {
     id: string;
     label: string;
     description?: string;
+    messages?: Array<Message>;
 }
